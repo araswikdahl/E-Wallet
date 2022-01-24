@@ -4,7 +4,8 @@
         <h1>E-WALLET</h1>
         <p class="card-status">ACTIVE CARD</p>
     </article>
- 
+ <Card @skickaTillHome="funktion"/>
+
 
 <button class="btn">ADD A NEW CARD</button>
 </div>
@@ -12,10 +13,21 @@
 </template>
 
 <script>
+import Card from '../components/Card.vue'
+
 export default {
+    components:{
+        Card
+    },
+    methods:{
+        funktion(){
+            console.log('h')
+        }
+    }
 
 }
 </script>
+
 
 <style>
 

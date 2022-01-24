@@ -1,24 +1,31 @@
 <template>
   <div class="registerForm">
-    <form action="">
+    <form @submit.prevent="createList">
       <label for="cardNumber">CARD NUMBER</label>
-      <input class="cardNumber" @keyup="testFunktion" v-model="card.cardNumber" type="number">
+      <input class="cardNumber" @keyup="eventFunktion" v-model="card.cardNumber" type="number">
 
       <label for="cardHolderName">CARDHOLDER NAME</label>
-      <input class="cardHolderName" @keyup="testFunktion" v-model="card.cardName" type="text">
+      <input class="cardHolderName" @keyup="eventFunktion" v-model="card.cardName" type="text">
+
       <div class="formValidWrapper">
         <div class="formvalidCcvWrapp">
           <label for="valid">VALID THRU</label>
-          <input class="valid" type="text">
+          <input class="valid" @keyup="eventFunktion" v-model="card.valid" type="number">
         </div>
         <div class="formvalidCcvWrapp">
           <label for="ccv">CCV</label>
-          <input class="ccv" @keyup="testFunktion" v-model="card.ccv" type="text">
+          <input class="ccv" @keyup="eventFunktion" v-model="card.ccv" type="number">
         </div>
       </div>
+
       <label for="vendor">VENDOR</label>
-      <input class="vendor" type="text">
-      <button class="btn btnForm">ADD CARD</button>
+      <select onchange="eventFunktion()" v-model="card.vendor" name="vendor">
+          <option value="ninja">Ninja</option>
+          <option value="bitcoin">Bitcoin</option>
+          <option value="evil">Evil</option>
+          <option value="blockchain">Blockchain</option>
+      </select>
+      <button @click="createList" class="btn btnForm" >ADD CARD</button>
     </form>
   </div>
 </template>
@@ -30,18 +37,34 @@ export default {
         card:{
              cardNumber: '',
              cardName: '',
+             valid:'',
+             vendor: '',
              ccv:'',
-        }
+        },
+        lista: [],
+
+        
       
     }
   },
   methods:{
-      testFunktion(){
-          this.$emit('hej', this.card)
+      eventFunktion(){
+          this.$emit('skickaTillabout', this.card)
+      },
+      createList(){
+          
+           this.lista.push(this.card)
+           this.$emit('skickaTillabout2', this.lista)
+         
+        //  this.$emit('skickaTillHome', this.card) 
+      }
+    //   myFunction(){
+    //     this.$emit()
+    //       }
+         
       }
   }
 
-}
 </script>
 
 <style>
@@ -53,7 +76,7 @@ form{
   display: flex;
   justify-content: space-between;
 }
-input{
+input, select{
   padding: 10px;
   border-radius: 8px;
   border: 1px solid black;

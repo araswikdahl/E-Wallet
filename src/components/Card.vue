@@ -1,63 +1,59 @@
 <template>
 <div class="CardAndForm">
- <div class="card">      
+    <div class="card">      
         <div class="heroIconsWrapper">
             <div class="iconsWrapper">
                 <img class="iconsStyle" src="../assets/wifi.svg" width="50px">
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
+                {{this.vendor}}
             </div>
                  <img class="iconsStyle" src="../assets/Bitcoin logo.png" width="40px">
         </div>
         <div class="cardNumberWrapper">
-            <h3>{{card.cardNumber}} </h3>
+            <h3>{{grillkorv.cardNumber}} </h3>
         </div>
         <div class="cardTextWrapper">
             <div class="cardNameWrapper">
                 <p>CARDHOLDER NAME</p>
                 <div class="cardNames">
-                    <p>{{card.cardName}}</p>
-                    <p>LASTNAME</p>
+                    <p>{{grillkorv.cardName}}</p>
                 </div>     
             </div>
             <div class="validWrapper">
               <p>VALID THRU</p>
-              <p>{{card.ccv}}</p>
+              <p>{{grillkorv.valid}}</p>
             </div>           
         </div>   
     </div>
-    <Form @hej="funktion"/>
-</div>
    
+</div>  
 </template>
 
 <script>
-import Form from './Form.vue'
 export default {
-    data(){
-        return{
-            card:{
-                 cardNumber: '',
-                 cardName: '',
-                 ccv:''
-        }
-            }
-        },
-    components:{
-        Form
-    },
+        props: ['grillkorv'],
     methods:{
-        funktion(janne){
-           this.card.cardNumber = janne.cardNumber
-           this.card.cardName = janne.cardName     
-           this.card.ccv = janne.ccv    
+        // funktion(cardPayload){
+        //    this.card.cardNumber = cardPayload.cardNumber
+        //    this.card.cardName = cardPayload.cardName     
+        //    this.card.valid = cardPayload.valid   
+        //    this.card.vendor = cardPayload.vendor  
+        //    this.card.ccv = cardPayload.ccv  
 
-        }
-    }
+        // },
+        // TheListFunktion(n){
+        //     console.log(n)
+        //     this.$emit('skickaTillhome', n)
+
+
+        // }
+    },
+   
 
 }
 </script>
 
-<style scoped>
+<style>
 .card{
     display: flex;
     flex-direction: column;
