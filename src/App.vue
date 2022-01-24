@@ -2,25 +2,32 @@
   <div id="app">
     <nav>
       <a @click="currentView = 'home'">Home</a>
-      <a @click="currentView = 'about'">About</a>
+      <a @click="currentView = 'addCard'">AddCard</a>
     </nav>
-    <Home v-if="currentView == 'home'"/>
-    <About v-else-if="currentView === 'about'"/>
+    <Home v-if="currentView == 'home'" v-bind:data="data"/>
+    <AddCard v-else-if="currentView === 'addCard'" @sendToApp="AddCardPayload" />
 
   </div>
 </template>
 
 <script>
 import Home from './view/Home.vue'
-import About from './view/About.vue'
+import AddCard from './view/AddCard.vue'
 
 export default {
   components:{
-    Home, About
+    Home, AddCard
   },
   data(){
     return{
-      currentView : 'home'
+      currentView : 'home',
+      data: ''
+    }
+  },
+  methods:{
+    AddCardPayload(u){
+      this.data = u
+      console.log(this.data)
     }
   }
 

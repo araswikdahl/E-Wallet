@@ -5,23 +5,23 @@
             <div class="iconsWrapper">
                 <img class="iconsStyle" src="../assets/wifi.svg" width="50px">
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
-                {{this.vendor}}
+                <!-- {{this.vendor}} -->
             </div>
                  <img class="iconsStyle" src="../assets/Bitcoin logo.png" width="40px">
         </div>
         <div class="cardNumberWrapper">
-            <h3>{{grillkorv.cardNumber}} </h3>
+            <h3>{{user.cardNumber}} </h3>
         </div>
         <div class="cardTextWrapper">
             <div class="cardNameWrapper">
                 <p>CARDHOLDER NAME</p>
                 <div class="cardNames">
-                    <p>{{grillkorv.cardName}}</p>
+                    <p>{{user.cardName}}</p>
                 </div>     
             </div>
             <div class="validWrapper">
               <p>VALID THRU</p>
-              <p>{{grillkorv.valid}}</p>
+              <p>{{user.valid}}</p>
             </div>           
         </div>   
     </div>
@@ -31,8 +31,12 @@
 
 <script>
 export default {
-        props: ['grillkorv'],
+        props: ['user'],
     methods:{
+        //    funktionabout(n){
+        //     this.hej = n;
+        //     // this.$emit('skickaTillcard', u)
+        // },
         // funktion(cardPayload){
         //    this.card.cardNumber = cardPayload.cardNumber
         //    this.card.cardName = cardPayload.cardName     
@@ -44,7 +48,6 @@ export default {
         // TheListFunktion(n){
         //     console.log(n)
         //     this.$emit('skickaTillhome', n)
-
 
         // }
     },

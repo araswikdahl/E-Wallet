@@ -1,25 +1,28 @@
 <template>
   <div class="registerForm">
-    <form @submit.prevent="createList">
+
+      <Card  v-bind:user="user"/>
+
+    <form @submit.prevent="">
       <label for="cardNumber">CARD NUMBER</label>
-      <input class="cardNumber" @keyup="eventFunktion" v-model="card.cardNumber" type="number">
+      <input class="cardNumber" @keyup="eventFunktion" v-model="user.cardNumber" type="number">
 
       <label for="cardHolderName">CARDHOLDER NAME</label>
-      <input class="cardHolderName" @keyup="eventFunktion" v-model="card.cardName" type="text">
+      <input class="cardHolderName" @keyup="eventFunktion" v-model="user.cardName" type="text">
 
       <div class="formValidWrapper">
         <div class="formvalidCcvWrapp">
           <label for="valid">VALID THRU</label>
-          <input class="valid" @keyup="eventFunktion" v-model="card.valid" type="number">
+          <input class="valid" @keyup="eventFunktion" v-model="user.valid" type="number">
         </div>
         <div class="formvalidCcvWrapp">
           <label for="ccv">CCV</label>
-          <input class="ccv" @keyup="eventFunktion" v-model="card.ccv" type="number">
+          <input class="ccv" @keyup="eventFunktion" v-model="user.ccv" type="number">
         </div>
       </div>
 
       <label for="vendor">VENDOR</label>
-      <select onchange="eventFunktion()" v-model="card.vendor" name="vendor">
+      <select onchange="eventFunktion()" v-model="user.vendor" name="vendor">
           <option value="ninja">Ninja</option>
           <option value="bitcoin">Bitcoin</option>
           <option value="evil">Evil</option>
@@ -31,36 +34,50 @@
 </template>
 
 <script>
+import Card from './Card.vue'
+
 export default {
+
   data(){
     return{
-        card:{
+        user:{
              cardNumber: '',
              cardName: '',
              valid:'',
              vendor: '',
              ccv:'',
-        },
-        lista: [],
+        }
+           
+    }
+
+
+     
+  },
+
+
+  components: {
+         Card
+    },
+  methods:{
+
+      eventFunktion(){
+          /* behöver jag ens en EVENT lyssnare i input???*/
+
+      },
+
+      createList(){
+          this.$emit('sendToAddCard', this.user)
+        //   let list= []
+        //    list.push(this.user)
+        //    console.log(list)
+        //    this.lista +=list
+        //  this.lista.push(this.user)
 
         
-      
-    }
-  },
-  methods:{
-      eventFunktion(){
-          this.$emit('skickaTillabout', this.card)
-      },
-      createList(){
-          
-           this.lista.push(this.card)
-           this.$emit('skickaTillabout2', this.lista)
+        //    this.$emit('skickaTillabout2', this.lista)
          
         //  this.$emit('skickaTillHome', this.card) 
       }
-    //   myFunction(){
-    //     this.$emit()
-    //       }
          
       }
   }
