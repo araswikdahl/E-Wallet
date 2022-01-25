@@ -4,11 +4,7 @@
         <h1>ADD A  NEW BANK CARD</h1>
         <p class="card-status">NEW CARD</p>
       </article>
-      
-      <!-- <Form @skickaTillabout="funktionabout"  @addList="TheListFunktion"
-      @skickaTillabout2="funktionabout2" 
-      /> -->
-      <Form @sendToAddCard="formPayload"/>
+      <Form @sendToAddCard="sendPayload"/>
   </div>
 </template>
 
@@ -19,27 +15,16 @@ import Form from '../components/Form.vue'
 export default {
     data(){
         return{
-            hej:[],
-            kommandelistan:''
+            objectdata:[],
         }
     },
     components:{
          Form
     },
     methods:{
-        formPayload(payload){
-            this.hej=payload
-           this.$emit('sendToApp', this.hej)
-
-        },
-        funktionabout(){
-            // this.hej = n;
-            // this.$emit('skickaTillcard', u)
-        },
-        funktionabout2(p){
-            this.kommandelistan = p;
-            console.log(this.kommandelistan)
-            
+        sendPayload(formdata){
+            this.objectdata=formdata
+           this.$emit('sendToApp', this.objectdata)
         }
     }
 

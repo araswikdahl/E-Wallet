@@ -5,12 +5,11 @@
             <div class="iconsWrapper">
                 <img class="iconsStyle" src="../assets/wifi.svg" width="50px">
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
-                <!-- {{this.vendor}} -->
             </div>
                  <img class="iconsStyle" src="../assets/Bitcoin logo.png" width="40px">
         </div>
         <div class="cardNumberWrapper">
-            <h3>{{user.cardNumber}} </h3>
+            <h3>{{user.cardNumber}}</h3>
         </div>
         <div class="cardTextWrapper">
             <div class="cardNameWrapper">
@@ -31,25 +30,9 @@
 
 <script>
 export default {
-        props: ['user'],
+        props: ['user','objectdata'],
     methods:{
-        //    funktionabout(n){
-        //     this.hej = n;
-        //     // this.$emit('skickaTillcard', u)
-        // },
-        // funktion(cardPayload){
-        //    this.card.cardNumber = cardPayload.cardNumber
-        //    this.card.cardName = cardPayload.cardName     
-        //    this.card.valid = cardPayload.valid   
-        //    this.card.vendor = cardPayload.vendor  
-        //    this.card.ccv = cardPayload.ccv  
-
-        // },
-        // TheListFunktion(n){
-        //     console.log(n)
-        //     this.$emit('skickaTillhome', n)
-
-        // }
+    
     },
    
 
@@ -66,10 +49,13 @@ export default {
     background-color: #D0D0D0;
     border-radius: 8px;
     padding: 10px;
+    box-shadow:  0px 0px 32px rgba(0, 0, 0, 0.1);
+       
 }
 .heroIconsWrapper{
     display: flex;
     justify-content: space-between;
+ 
 }
 .iconsWrapper{
     display: flex;

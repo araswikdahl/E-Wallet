@@ -4,7 +4,12 @@
         <h1>E-WALLET</h1>
         <p class="card-status">ACTIVE CARD</p>
     </article>
- <CardList v-bind:data="data"/>
+      <div class="gridforcards">
+          <Card v-for="object in listdata" 
+      :key="object.cardNumber"
+      :user="object"/>
+
+      </div>
 
 
 <button class="btn">ADD A NEW CARD</button>
@@ -14,13 +19,13 @@
 
 <script>
 
-import CardList from '../components/CardList.vue'
+import Card from '../components/Card.vue'
 
 export default {
     components:{
-        CardList
+        Card
     },
-    props:["data"]
+    props:["listdata"]
 
 }
 </script>
@@ -64,6 +69,11 @@ export default {
 .card-status{
     font-size: 12px;
      color: rgba(34, 34, 34, 0.6)
+}
+.gridforcards{
+    display: grid;
+    grid-auto-rows: 4rem ;
+
 }
 
 </style>

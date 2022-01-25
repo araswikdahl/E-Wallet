@@ -4,7 +4,7 @@
       <a @click="currentView = 'home'">Home</a>
       <a @click="currentView = 'addCard'">AddCard</a>
     </nav>
-    <Home v-if="currentView == 'home'" v-bind:data="data"/>
+    <Home v-if="currentView == 'home'" v-bind:listdata="listdata"/>
     <AddCard v-else-if="currentView === 'addCard'" @sendToApp="AddCardPayload" />
 
   </div>
@@ -21,13 +21,14 @@ export default {
   data(){
     return{
       currentView : 'home',
-      data: ''
+      listdata: []
     }
   },
   methods:{
     AddCardPayload(u){
-      this.data = u
-      console.log(this.data)
+       this.listdata.push(u)
+       console.log(u)
+      
     }
   }
 

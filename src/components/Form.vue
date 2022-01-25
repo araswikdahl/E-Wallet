@@ -20,14 +20,15 @@
           <input class="ccv" @keyup="eventFunktion" v-model="user.ccv" type="number">
         </div>
       </div>
-
-      <label for="vendor">VENDOR</label>
-      <select onchange="eventFunktion()" v-model="user.vendor" name="vendor">
-          <option value="ninja">Ninja</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="evil">Evil</option>
-          <option value="blockchain">Blockchain</option>
-      </select>
+      <div class="vendorWrapp">
+          <label for="vendor">VENDOR</label>
+        <select onchange="eventFunktion()" v-model="user.vendor" name="vendor">
+            <option value="ninja">Ninja</option>
+            <option value="bitcoin">Bitcoin</option>
+            <option value="evil">Evil</option>
+            <option value="blockchain">Blockchain</option>
+        </select>
+      </div>    
       <button @click="createList" class="btn btnForm" >ADD CARD</button>
     </form>
   </div>
@@ -37,7 +38,6 @@
 import Card from './Card.vue'
 
 export default {
-
   data(){
     return{
         user:{
@@ -46,15 +46,9 @@ export default {
              valid:'',
              vendor: '',
              ccv:'',
-        }
-           
-    }
-
-
-     
+        }         
+    }    
   },
-
-
   components: {
          Card
     },
@@ -64,24 +58,12 @@ export default {
           /* behöver jag ens en EVENT lyssnare i input???*/
 
       },
-
       createList(){
-          this.$emit('sendToAddCard', this.user)
-        //   let list= []
-        //    list.push(this.user)
-        //    console.log(list)
-        //    this.lista +=list
-        //  this.lista.push(this.user)
-
-        
-        //    this.$emit('skickaTillabout2', this.lista)
-         
-        //  this.$emit('skickaTillHome', this.card) 
+          this.$emit('sendToAddCard',{...this.user})
       }
          
       }
   }
-
 </script>
 
 <style>
@@ -102,10 +84,19 @@ input, select{
   display: flex;
   flex-direction: column;
 }
+.vendorWrapp{
+  display: flex;
+  flex-direction: column;
+}
 .btnForm{
   background-color: black;
   color: white;
   margin-top: 20px;
+}
+select option{
+  background-color: blue;
+ width: 50px;
+ padding: 100px;
 }
 
 </style>
