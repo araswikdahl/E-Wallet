@@ -4,15 +4,22 @@
         <h1>E-WALLET</h1>
         <p class="card-status">ACTIVE CARD</p>
     </article>
+    <div class="placeholderCard">
+        <!-- <Card v-if="activcard"
+      :user="listdata"/>
+    </div> -->
+     
+    </div>
       <div class="gridforcards">
           <Card v-for="object in listdata" 
       :key="object.cardNumber"
-      :user="object"/>
+      :user="object"
+      />
 
       </div>
 
 
-<button class="btn">ADD A NEW CARD</button>
+<button @click="viewChanger" class="btn">ADD A NEW CARD</button>
 </div>
   
 </template>
@@ -22,10 +29,24 @@
 import Card from '../components/Card.vue'
 
 export default {
+    data(){
+        return{
+          activcard:false
+        }
+    },
     components:{
         Card
     },
-    props:["listdata"]
+    props:["listdata"],
+    methods:{
+        viewChanger(){
+            // this.$emit('changeView','')
+             this.activcard=true
+
+       
+        }
+        
+    }
 
 }
 </script>

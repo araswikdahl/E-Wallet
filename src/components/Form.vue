@@ -5,24 +5,33 @@
 
     <form @submit.prevent="">
       <label for="cardNumber">CARD NUMBER</label>
-      <input class="cardNumber" @keyup="eventFunktion" v-model="user.cardNumber" type="number">
+      <input class="cardNumber" v-model="user.cardNumber" type="number">
 
       <label for="cardHolderName">CARDHOLDER NAME</label>
-      <input class="cardHolderName" @keyup="eventFunktion" v-model="user.cardName" type="text">
+      <input class="cardHolderName" v-model="user.cardName" type="text">
 
       <div class="formValidWrapper">
         <div class="formvalidCcvWrapp">
-          <label for="valid">VALID THRU</label>
-          <input class="valid" @keyup="eventFunktion" v-model="user.valid" type="number">
+          <label for="expireMonth">MONTH</label>
+          <select v-model="user.expireMonth" name="MONTH" id="expireMonth">
+            <option v-for="month in 12" :key="month">{{month}}</option>
+          </select>
+    
         </div>
         <div class="formvalidCcvWrapp">
-          <label for="ccv">CCV</label>
-          <input class="ccv" @keyup="eventFunktion" v-model="user.ccv" type="number">
+             <label for="expireYear">YEAR</label>
+          <select v-model="user.expireYear" name="MONTH" id="expireYear">
+            <option>{{22}}</option>
+            <option>{{23}}</option>
+            <option>{{24}}</option>
+            <option>{{25}}</option>
+          </select>
+          
         </div>
       </div>
       <div class="vendorWrapp">
           <label for="vendor">VENDOR</label>
-        <select onchange="eventFunktion()" v-model="user.vendor" name="vendor">
+        <select v-model="user.vendor" name="vendor">
             <option value="ninja">Ninja</option>
             <option value="bitcoin">Bitcoin</option>
             <option value="evil">Evil</option>
@@ -46,6 +55,9 @@ export default {
              valid:'',
              vendor: '',
              ccv:'',
+             expireMonth:'',
+             expireYear:'',
+             activcard:false,
         }         
     }    
   },
@@ -53,11 +65,6 @@ export default {
          Card
     },
   methods:{
-
-      eventFunktion(){
-          /* behöver jag ens en EVENT lyssnare i input???*/
-
-      },
       createList(){
           this.$emit('sendToAddCard',{...this.user})
       }
@@ -79,10 +86,14 @@ input, select{
   padding: 10px;
   border-radius: 8px;
   border: 1px solid black;
+  margin: 10px 0px
 }
 .formvalidCcvWrapp{
   display: flex;
   flex-direction: column;
+}
+.formvalidCcvWrapp select{
+  width: 180px;
 }
 .vendorWrapp{
   display: flex;
