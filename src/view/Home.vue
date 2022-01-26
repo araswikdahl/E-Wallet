@@ -6,16 +6,16 @@
     </article>
     <div class="placeholderCard">
 
-            <Card v-if="activeCard" :user="activeCard"/>
-     
+        <Card v-if="activeCard" :user="activeCard"/> 
+
     </div>
       <div class="gridforcards">
-     
-          <Card v-for="object in listdata" 
-      :key="object.cardNumber"
-      @click="activeCard=object"
-      :user="object"
-      />
+          
+        <Card v-for="object in listdata" 
+        :key="object.cardNumber"
+        @click="activeCard=object"
+        :user="object"
+        />
       </div>
 
 

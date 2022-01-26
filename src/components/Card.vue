@@ -3,7 +3,7 @@
     <div class="card" :class="[user.vendor]" @click="$emit('click')">      
         <div class="heroIconsWrapper">
             <div class="iconsWrapper">
-                <img class="iconsStyle" src="../assets/wifi.svg" width="50px">
+                <img class="iconsStyle" src="../assets/wifi_white.svg" width="50px">
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
             </div>
                  <!-- <img class="iconsStyle" v-bind:src="hej"> -->
@@ -12,7 +12,7 @@
                  <img v-else :src="require(`../assets/Bitcoin logo.png`)" class="iconsStyle">            
         </div>
         <div class="cardNumberWrapper">
-            <h3>{{user.cardNumber}}</h3>
+            <h3> {{spaceNumbers}} </h3>
         </div>
         <div class="cardTextWrapper">
             <div class="cardNameWrapper">
@@ -25,6 +25,7 @@
               <p>VALID THRU</p>
               <div class="expiremonthWrapper">
                   {{FullYear}}
+
               </div>
               
             </div>           
@@ -46,6 +47,19 @@ export default {
     computed:{
         FullYear(){
             return this.user.expireMonth + '/' + this.user.expireYear
+        },
+        spaceNumbers(){
+            let space =''
+            for(let i=0; i < this.user.cardNumber.length; i++){
+                if(i % 4 == 0){
+                    space +=" ";
+                }
+                space +=this.user.cardNumber[i]
+                if(space.length>19){
+                    return space
+                }
+            }
+return space
         }
     }
 }
@@ -54,6 +68,7 @@ export default {
 <style>
 
 .card{
+     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -67,18 +82,22 @@ export default {
 }
 .bitcoin  {
   background-color: #ffae34;
+   text-shadow: 0.5px 0.5px #5a5a5a;
 }
 .blockchain {
   background-color: #8b58f9;
   color: white;
+  text-shadow: 0.5px 0.5px #918f8f;
 }
 .evil {
   background-color: #f33355;
   color: white;
+  text-shadow: 0.5px 0.5px #918f8f;
 }
 .ninja {
   background-color: #222222;
   color: white;
+  text-shadow: 0.5px 0.5px #918f8f;
 }
 .heroIconsWrapper{
     display: flex;
