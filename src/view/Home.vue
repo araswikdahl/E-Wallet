@@ -40,8 +40,7 @@ export default {
     props:["listdata"],
     methods:{
         viewChanger(){
-            // this.$emit('changeView','')
-             this.activcard=true
+            this.$emit('changeView')
 
        
         }

@@ -1,12 +1,7 @@
 <template>
   <div id="app">
-    <nav>
-      <a @click="currentView = 'home'">Home</a>
-      <a @click="currentView = 'addCard'">AddCard</a>
-    </nav>
-    <Home v-if="currentView == 'home'" v-bind:listdata="listdata"/>
+    <Home @changeView="change" v-if="currentView == 'home'" v-bind:listdata="listdata"/>
     <AddCard v-else-if="currentView === 'addCard'" @sendToApp="AddCardPayload" />
-
   </div>
 </template>
 
@@ -28,7 +23,10 @@ export default {
     AddCardPayload(u){
        this.listdata.push(u)
        console.log(u)
-      
+       this.currentView = 'home'   
+    },
+    change(){
+      this.currentView = 'addCard'
     }
   }
 
