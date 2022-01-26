@@ -5,17 +5,17 @@
         <p class="card-status">ACTIVE CARD</p>
     </article>
     <div class="placeholderCard">
-        <!-- <Card v-if="activcard"
-      :user="listdata"/>
-    </div> -->
+
+            <Card v-if="activeCard" :user="activeCard"/>
      
     </div>
       <div class="gridforcards">
+     
           <Card v-for="object in listdata" 
       :key="object.cardNumber"
+      @click="activeCard=object"
       :user="object"
       />
-
       </div>
 
 
@@ -31,7 +31,7 @@ import Card from '../components/Card.vue'
 export default {
     data(){
         return{
-          activcard:false
+        activeCard:null
         }
     },
     components:{

@@ -1,6 +1,6 @@
 <template>
 <div class="CardAndForm">
-    <div class="card" :class="[user.vendor]" @click="activCardFunktion">      
+    <div class="card" :class="[user.vendor]" @click="$emit('click')">      
         <div class="heroIconsWrapper">
             <div class="iconsWrapper">
                 <img class="iconsStyle" src="../assets/wifi.svg" width="50px">
