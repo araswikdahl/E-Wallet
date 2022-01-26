@@ -3,7 +3,7 @@
 
       <Card  v-bind:user="user"/>
 
-    <form @submit.prevent="">
+    <form @submit.prevent="createList">
       <label for="cardNumber">CARD NUMBER</label>
       <input class="cardNumber" v-model="user.cardNumber" type="number">
 
@@ -38,7 +38,7 @@
             <option value="blockchain">Blockchain</option>
         </select>
       </div>    
-      <button @click="createList" class="btn btnForm" >ADD CARD</button>
+      <button class="btn btnForm" >ADD CARD</button>
     </form>
   </div>
 </template>

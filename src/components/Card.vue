@@ -24,9 +24,7 @@
             <div class="validWrapper">
               <p>VALID THRU</p>
               <div class="expiremonthWrapper">
-                  <span>{{user.expireMonth}}</span>
-                  <span>/</span>
-                  <span>{{user.expireYear}}</span>
+                  {{FullYear}}
               </div>
               
             </div>           
@@ -44,6 +42,11 @@ export default {
             console.log(this.user)
         }
        
+    },
+    computed:{
+        FullYear(){
+            return this.user.expireMonth + '/' + this.user.expireYear
+        }
     }
 }
 </script>
