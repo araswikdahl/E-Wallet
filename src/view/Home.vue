@@ -10,7 +10,7 @@
 
     </div>
       <div class="gridforcards">
-          
+
         <Card v-for="object in listdata" 
         :key="object.cardNumber"
         @click="activeCard=object"
@@ -84,6 +84,7 @@ export default {
     font-weight: bold;
     border: 1px solid black;
     width: 380px;
+    margin-top: 50px;
 
 }
 .card-status{
@@ -93,6 +94,7 @@ export default {
 .gridforcards{
     display: grid;
     grid-auto-rows: 4rem ;
+    margin-bottom: 40%;
 
 }
 

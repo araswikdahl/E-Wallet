@@ -5,9 +5,7 @@
             <div class="iconsWrapper">
                 <img class="iconsStyle" src="../assets/wifi_white.svg" width="50px">
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
-            </div>
-                 <!-- <img class="iconsStyle" v-bind:src="hej"> -->
-               
+            </div>         
                  <img v-if="user.vendor" :src="require(`../assets/${user.vendor}.svg`)" class="iconsStyle">            
                  <img v-else :src="require(`../assets/Bitcoin logo.png`)" class="iconsStyle">            
         </div>
