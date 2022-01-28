@@ -41,12 +41,8 @@ export default {
     methods:{
         viewChanger(){
             this.$emit('changeView')
-
-       
-        }
-        
+        }      
     }
-
 }
 </script>
 

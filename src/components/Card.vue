@@ -16,7 +16,7 @@
             <div class="cardNameWrapper">
                 <p>CARDHOLDER NAME</p>
                 <div class="cardNames">
-                    <p>{{user.cardName}}</p>
+                    <p>{{user.cardName.toUpperCase() }}</p>
                 </div>     
             </div>
             <div class="validWrapper">
@@ -127,6 +127,7 @@ padding: 5px;
 .bitcoinIcon{
     width: 30px;
     height: 40px;
+    margin:5px 10px;
 }
 .expiremonthWrapper{
     text-align: end;

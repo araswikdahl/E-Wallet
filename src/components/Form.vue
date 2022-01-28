@@ -5,22 +5,30 @@
 
     <form @submit.prevent="createList">
       <label for="cardNumber">CARD NUMBER</label>
-      <input class="cardNumber" v-model="user.cardNumber" type="number" placeholder="XXXX XXXX XXXX XXXX">
+      <input class="cardNumber"
+         v-model="user.cardNumber" 
+         type="text" placeholder="XXXX XXXX XXXX XXXX"
+         maxlength="19" onkeypress="return /[0-9, ' ']/i.test(event.key)"
+         required>
 
       <label for="cardHolderName">CARDHOLDER NAME</label>
-      <input class="cardHolderName" v-model="user.cardName" type="text" placeholder="Firstname Lastname">
+      <input class="cardHolderName" 
+         v-model="user.cardName" 
+         type="text" placeholder="Firstname Lastname" 
+         onkeypress="return /[A-Z, ' ']/i.test(event.key)"
+         required>
 
       <div class="formValidWrapper">
         <div class="formvalidCcvWrapp">
           <label for="expireMonth">MONTH</label>
-          <select v-model="user.expireMonth" name="MONTH" id="expireMonth">
+          <select v-model="user.expireMonth" name="MONTH" id="expireMonth" required>
             <option v-for="month in 12" :key="month">{{month}}</option>
           </select>
     
         </div>
         <div class="formvalidCcvWrapp">
              <label for="expireYear">YEAR</label>
-          <select v-model="user.expireYear" name="MONTH" id="expireYear">
+          <select v-model="user.expireYear" name="MONTH" id="expireYear" required>
             <option>{{22}}</option>
             <option>{{23}}</option>
             <option>{{24}}</option>
@@ -31,15 +39,16 @@
       </div>
       <div class="vendorWrapp">
           <label for="vendor">VENDOR</label>
-        <select v-model="user.vendor" name="vendor">
+        <select v-model="user.vendor" name="vendor" required>
             <option value="ninja">Ninja</option>
             <option value="bitcoin">Bitcoin</option>
             <option value="evil">Evil</option>
             <option value="blockchain">Blockchain</option>
         </select>
       </div>    
+
       <nav class="btnWrapper">
- <button class="btn btnForm" >ADD CARD</button>
+         <button class="btn btnForm" >ADD CARD</button>
       </nav>
      
     </form>
@@ -60,7 +69,6 @@ export default {
              ccv:'',
              expireMonth:'',
              expireYear:'',
-             activcard:false,
         }         
     }    
   },
@@ -70,6 +78,9 @@ export default {
   methods:{
       createList(){
           this.$emit('sendToAddCard',{...this.user})
+          if(this.user.cardNumber.length < 16 ){
+                alert("error")
+            }
       }
          
       }
