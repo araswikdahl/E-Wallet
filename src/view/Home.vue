@@ -1,27 +1,27 @@
 <template>
-<div class="home">
-    <article class="headings">
-        <h1>E-WALLET</h1>
-        <p class="card-status">ACTIVE CARD</p>
-    </article>
+<article class="home">
+    <header class="headings">
+        <div>
+            <h1>E-WALLET</h1>
+            <p class="card-status">ACTIVE CARD</p>
+        </div>     
+    </header>
     <div class="placeholderCard">
 
         <Card v-if="activeCard" :user="activeCard"/> 
 
     </div>
-      <div class="gridforcards">
-
+    <main class="gridforcards">
         <Card v-for="object in listdata" 
         :key="object.cardNumber"
         @click="activeCard=object"
         :user="object"
         />
-      </div>
-
-
-<button @click="viewChanger" class="btn">ADD A NEW CARD</button>
-</div>
-  
+    </main>
+    <nav class="btnWrapper">
+        <button @click="viewChanger" class="btn">ADD A NEW CARD</button>
+    </nav>   
+</article>
 </template>
 
 <script>
@@ -54,8 +54,10 @@ export default {
 <style>
 
 .home{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
+    grid-gap: 20px;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(248, 248, 248);
@@ -65,16 +67,13 @@ export default {
     padding: 10px;
 }
 .headings{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    grid-row: auto;
     align-items: center;
     font-family: sans-serif;
-    width: 60%;
     text-align: center;
 }
 .headings h1{
-    padding: 30px 0px;
+    padding: 20px 45px;
 }
 .btn{
     padding: 20px;
@@ -84,14 +83,17 @@ export default {
     font-weight: bold;
     border: 1px solid black;
     width: 380px;
-    margin-top: 50px;
-
+    margin-top: 40px;
+}
+.btnWrapper{
+    margin: auto;
 }
 .card-status{
     font-size: 12px;
      color: rgba(34, 34, 34, 0.6)
 }
 .gridforcards{
+    grid-row: auto;
     display: grid;
     grid-auto-rows: 4rem ;
     margin-bottom: 40%;

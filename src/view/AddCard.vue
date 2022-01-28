@@ -1,11 +1,13 @@
 <template>
-  <div class="home">
-      <article class="headings">
-        <h1>ADD A  NEW BANK CARD</h1>
-        <p class="card-status">NEW CARD</p>
-      </article>
+  <article class="home">
+      <header class="headings">
+          <div class="addcardHeading">
+            <h1>ADD A  NEW BANK CARD</h1>
+            <p class="card-status">NEW CARD</p>
+          </div>   
+      </header>
       <Form @sendToAddCard="sendPayload"/>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -31,6 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
 
 </style>

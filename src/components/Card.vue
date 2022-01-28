@@ -7,7 +7,7 @@
                 <img class="iconsStyle" src="../assets/chip.svg" width="50px">
             </div>         
                  <img v-if="user.vendor" :src="require(`../assets/${user.vendor}.svg`)" class="iconsStyle">            
-                 <img v-else :src="require(`../assets/Bitcoin logo.png`)" class="iconsStyle">            
+                 <img v-else :src="require(`../assets/Bitcoin logo.png`)" class="bitcoinIcon">            
         </div>
         <div class="cardNumberWrapper">
             <h3> {{spaceNumbers}} </h3>
@@ -35,13 +35,6 @@
 <script>
 export default {
         props: ['user'],
-    methods:{  
-        activCardFunktion(){
-            this.user.activcard=true
-            console.log(this.user)
-        }
-       
-    },
     computed:{
         FullYear(){
             return this.user.expireMonth + '/' + this.user.expireYear
@@ -128,8 +121,12 @@ return space
 padding: 5px;
 }
 .iconsStyle{
-    width: 40px;
+    width: 50px;
     height: 50px;
+}
+.bitcoinIcon{
+    width: 30px;
+    height: 40px;
 }
 .expiremonthWrapper{
     text-align: end;

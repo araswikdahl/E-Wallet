@@ -5,10 +5,10 @@
 
     <form @submit.prevent="createList">
       <label for="cardNumber">CARD NUMBER</label>
-      <input class="cardNumber" v-model="user.cardNumber" type="number">
+      <input class="cardNumber" v-model="user.cardNumber" type="number" placeholder="XXXX XXXX XXXX XXXX">
 
       <label for="cardHolderName">CARDHOLDER NAME</label>
-      <input class="cardHolderName" v-model="user.cardName" type="text">
+      <input class="cardHolderName" v-model="user.cardName" type="text" placeholder="Firstname Lastname">
 
       <div class="formValidWrapper">
         <div class="formvalidCcvWrapp">
@@ -38,7 +38,10 @@
             <option value="blockchain">Blockchain</option>
         </select>
       </div>    
-      <button class="btn btnForm" >ADD CARD</button>
+      <nav class="btnWrapper">
+ <button class="btn btnForm" >ADD CARD</button>
+      </nav>
+     
     </form>
   </div>
 </template>
@@ -77,16 +80,20 @@ export default {
 form{
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .formValidWrapper{
   display: flex;
   justify-content: space-between;
 }
 input, select{
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid black;
-  margin: 10px 0px
+  box-sizing: border-box;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin: 10px 0px;
+    font-size: 1.2rem;
+    width: 100%;
 }
 .formvalidCcvWrapp{
   display: flex;
@@ -105,9 +112,11 @@ input, select{
   margin-top: 20px;
 }
 select option{
-  background-color: blue;
- width: 50px;
- padding: 100px;
-}
+        border-radius: 0.4rem;
+        padding: 0.8rem;
+        border: 1px solid black;
+        background-color: rgb(158, 158, 158);
+        color: white;    
+    }
 
 </style>
